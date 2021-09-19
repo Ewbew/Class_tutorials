@@ -23,6 +23,15 @@ If you're up for a challenge you can also write code which loads all the data in
 
 ```{r}
 #loading data
+filesAud <- list.files(path = "C:/Users/Totos/Desktop/Perception and Action/Github stuff or exercises/Data/Audition", pattern = "*.csv", full.names = T)
+
+audition <- sapply(filesAud, read_csv, simplify=FALSE) %>% 
+bind_rows(.id = "id")
+
+filesVis <- list.files(path = "C:/Users/Totos/Desktop/Perception and Action/Github stuff or exercises/Data/Vision", pattern = "*.csv", full.names = T)
+
+vision <- sapply(filesVis, read_csv, simplify=FALSE) %>% 
+bind_rows(.id = "id")
 
 ```
 
@@ -35,7 +44,7 @@ What variables do we have? Which ones are we interested in? Do we need to change
 
 ```{r}
 # get a glimpse of the data
-glimpse(data_audition)
+glimpse(audition)
 glimpse(data_vision)
 
 
@@ -47,8 +56,19 @@ Interpret the findings. Do they match your predictions? Why? Why not?
 
 ```{r}
 ########################## PLOTTING TIME ##################################
-
 # write your code here
+
+
+audition = audition %>% 
+  filter(accuracy != "FALSE")
+
+vision = vision %>% 
+  filter(accuracy != "FALSE")
+
+
+  ggplot(., aes(congruency, rt, fill = congruency)+
+  geom_bar(stat = "summary", fun.y = mean)
+,
 
 ```
 
