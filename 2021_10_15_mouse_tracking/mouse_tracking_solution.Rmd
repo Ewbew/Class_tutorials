@@ -22,6 +22,8 @@ Load the data file subject-2.csv into R and briefly inspect it.
 
 ```{r}
 d <- read_csv('subject-3.csv')
+
+head(d)
 ```
 
 MouseTrap documentation page: <https://www.rdocumentation.org/packages/mousetrap/versions/3.1.5/topics/mousetrap> 
@@ -33,6 +35,9 @@ Now take a moment to look at the structure that it created. What are the element
 
 ```{r}
 m <- mt_import_mousetrap(d)
+
+# A fuck ton of stuff - font size and what not
+head(m)
 ```
 
 2.	Make a plot. 
@@ -42,11 +47,13 @@ Try to understand what the lines mean and how to “read” the graph. What seem
 # initial plot
 mt_plot(m)
 
+?mt_plot
 # specified
 mt_plot(
   data = m,
   use = 'trajectories'
   )
+
 
 ```
 3. The demo-experiment had different trial types for which we have different predictions. Make a plot that distinguishes these two conditions, e.g. by different colors. 
@@ -57,6 +64,8 @@ mt_plot(
   m, 
   color = 'trial_type' # the magic happens here
 )
+head(m)
+
 ```
  
   
@@ -69,6 +78,8 @@ m <- mt_remap_symmetric(
   use = 'trajectories',
   remap_xpos = "left"
   )
+
+?mt_remap_symmetric
 
 # plot again
 mt_plot(
@@ -100,6 +111,7 @@ mt_plot(
 6.	Find a function to remove this “line” and plot again.
 ```{r}
 m <- mt_exclude_initiation(m)
+?mt_exclude_initiation
 ```
 
 If you now plotted x and y coordinates again, what would have changed in the plot? Think first, then try it! 
