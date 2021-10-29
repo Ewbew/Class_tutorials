@@ -133,6 +133,8 @@ mt_plot(
 
 ```{r}
 m <- mt_time_normalize(m)
+glimpse(m)
+?mt_time_normalize
 ```
 
 8.	Find out how to plot the normalized trajectories instead of the raw data.
